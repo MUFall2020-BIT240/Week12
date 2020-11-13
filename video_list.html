@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Video Select</title>
+	</head>
+	<body>
+		<h1>YouTube video select</h1>
+	
+		<div id="list"></div>
+	
+		<script>
+			var listDiv = document.getElementById('list');
+			var movies = ["Jq-ODza3Kpc", "_STJoxd9mxk", "5pqwsep-Lco"];
+		
+			movies.forEach(function(movie_code) {
+				console.log("Movie code: ", movie_code);
+				
+				// fancy string concatentation with 
+				// the template literal backticks
+				// notice: the "?code=${movie_code}" is 
+				// where the magic happens
+				listDiv.innerHTML += `<p>Watch <a href="video_view.html?code=${movie_code}">${movie_code}</a></p>`;
+			});
+		
+		</script>
+	<body>
+</html>

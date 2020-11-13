@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Video View</title>
+	</head>
+	<body>
+		<h1>YouTube video view</h1>
+	
+		<iframe id="youtube" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	
+		<script>
+			var iframe = document.getElementById("youtube");
+			var youtube_src = "https://www.youtube.com/embed/";
+			
+			// "window" is a global javascript object that is 
+			// given to us by the browser, just like "document"
+			// window.location.search will be someting like "?code=Jq-ODza3Kpc"
+			var query_parameters = new URLSearchParams(window.location.search)
+		
+			// fancy string concatenation to add the dynamic
+			// code that was passed in via query string parameter
+			// to the base youtube embed URL
+			youtube_src += query_parameters.get('code')
+		
+			// setting the "src" attribute of the iframe!
+			iframe.src = youtube_src;
+		</script>
+	<body>
+</html>

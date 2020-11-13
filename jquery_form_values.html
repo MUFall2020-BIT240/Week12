@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>jQuery Form Values</title>
+	</head>
+	<body>
+		<h1>jQuery Form Values</h1>
+	
+		<input type="text" id="first_name" placeholder="First name" />
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script>
+			var first_name = document.getElementById("first_name");
+			
+			//first_name.value = "brock";
+			//first_name.value = prompt("What is your name?");
+
+			// we use .val() to set a value of a form element with jQuery
+			$("#first_name").val('brock ellis');
+
+		</script>
+	<body>
+</html>

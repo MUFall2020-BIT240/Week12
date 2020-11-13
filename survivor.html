@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Survivor BIT240</title>
+	</head>
+	<body>
+		<h1>SURVIVOR</h1>
+		
+		<button id='remove'>Remove</button>
+	
+		<p>Remaining:</p>
+		<ul id="remaining"></ul>
+	
+		<p>Removed:</p>
+		<ul id="removed"></ul>
+	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script>
+			$(document).ready(function() {
+				var remove_btn = $("#remove"); 
+				var remaining_list = $("#remaining");
+				var removed_list = $("#removed");
+			
+				var remaining_students = ["Danson", "Christopher", "Thomas", "Jeffrey", "Baylee", "Mika", "Ben", "Dom"];
+				var removed_students = [];
+			
+				$(remove_btn).click(eliminateStudent);
+			
+				function displayRemainingStudents(students) {
+					// when we want to update the list, let's first 
+					// remove all of the items in the list
+					$(remaining_list).empty();
+					
+					// then, loo through each students in the 
+					// array and add them back
+					$(students).each(function() {
+						// "this" will reference the student we are looping over
+						$(remaining_list).append("<li>" + this + "</li>");
+					});
+				}
+				
+				function displayRemovedStudents(students) {
+					$(removed_list).empty();
+					
+					$(students).each(function() {
+						// "this" will reference the student we are looping over
+						$(removed_list).append("<li>" + this + "</li>");
+					});
+				}
+			
+				function eliminateStudent() {
+					// this is our "error checking"
+					// if we dont have any more students to remove
+					// we need to not let the user try
+					// the "return" keyword used like this will
+					// stop the rest of the funcion from running
+					if (remaining_students.length <= 0) {
+						alert("Not enough students!");
+						return;
+					}
+				
+					var random_index = Math.floor(Math.random() * remaining_students.length )
+					
+					// splice returns the removed elements (in an array)
+					// splice fills in the gap from the removed elements
+					var removed_student = remaining_students.splice(random_index, 1)
+				
+					// take the student that was removed and add
+					// them to the removed student list
+					// remember: elements removed frm splicing come back
+					// to us in an array, so we have to use [0]
+					// to get the single student we removed
+					removed_students.push(removed_student[0]);
+					
+					console.log(removed_student);
+					console.log(remaining_students);
+					console.log(removed_students);
+										
+					displayRemainingStudents(remaining_students);
+					displayRemovedStudents(removed_students);
+				}
+				
+				// when the page is loaded, let's display the full
+				// list of students in the remaining student list
+				displayRemainingStudents(remaining_students);
+			});			
+					
+		</script>
+	<body>
+</html>
